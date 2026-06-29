@@ -92,9 +92,9 @@
   .alt{background:var(--cream2)}
   .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
   .card{position:relative;min-height:330px;border-radius:14px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;
-    background-size:cover;background-position:center;transition:var(--t),background-size .9s var(--ease);background-size:104%}
+    background-size:cover;background-position:center;background-repeat:no-repeat;transition:var(--t)}
   .card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,20,34,.92) 8%,rgba(11,20,34,.5) 45%,rgba(11,20,34,.15) 100%);transition:var(--t)}
-  .card:hover{background-size:112%;transform:translateY(-4px);box-shadow:0 26px 50px rgba(22,48,74,.22)}
+  .card:hover{transform:translateY(-4px);box-shadow:0 26px 50px rgba(22,48,74,.22)}
   .card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--brass);z-index:3;transition:width .55s var(--ease)}
   .card:hover::before{width:100%}
   .card .cc{position:relative;z-index:2;padding:22px 22px 24px;color:#fff}
