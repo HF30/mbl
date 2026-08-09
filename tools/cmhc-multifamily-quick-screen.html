@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CMHC Multifamily Quick Screen — Free Loan-Sizing Calculator | MBL Developments</title>
+<meta name="description" content="Free deterministic quick screen for an existing 5+ unit rental property: NOI, value at cap, DCR- and LTV-sized loans, the binding constraint, cash to close, cash-on-cash and break-even occupancy.">
+<link rel="canonical" href="https://mbldevelopments.com/tools/cmhc-multifamily-quick-screen.html">
+<meta property="og:title" content="CMHC Multifamily Quick Screen — free calculator">
+<meta property="og:description" content="Size an existing multifamily loan the way a lender does: DCR vs LTV, binding constraint named, math visible.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mbldevelopments.com/tools/cmhc-multifamily-quick-screen.html">
+<meta property="og:image" content="https://mbldevelopments.com/multiplex-exterior.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CMHC Multifamily Quick Screen","applicationCategory":"FinanceApplication","operatingSystem":"Web browser","url":"https://mbldevelopments.com/tools/cmhc-multifamily-quick-screen.html","offers":{"@type":"Offer","price":"0","priceCurrency":"CAD"},"provider":{"@type":"Organization","@id":"https://mbldevelopments.com/#organization","name":"MBL Developments","url":"https://mbldevelopments.com/"}}</script>
+<link rel="stylesheet" href="https://use.typekit.net/pqx5flm.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a1018;--bg2:#0e1621;--panel:#111c2a;--brass:#d4af37;--brass-lt:#e6c558;--text:#e8e4da;--text-dim:#9aa4b0;--line:rgba(212,175,55,.14);--line2:rgba(255,255,255,.07);--head:"futura-pt","Jost","Mulish",sans-serif;--body:"proxima-nova","Mulish",-apple-system,sans-serif;--ok:#7ec98f;--warn:#e0a44f}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font:16px/1.65 var(--body);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{color:var(--brass-lt);text-decoration:none}
+  .container{max-width:960px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line2);background:var(--bg2)}
+  nav.bar{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;max-width:1180px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:12px}
+  .lwm{font-family:var(--head);font-weight:700;font-size:20px;letter-spacing:.1em;color:#fff;line-height:1}
+  .lwd{font-family:var(--head);font-weight:500;font-size:8px;letter-spacing:.42em;text-transform:uppercase;color:var(--brass)}
+  nav.bar a.link{font-family:var(--head);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-left:24px}
+  h1{font-family:var(--head);font-weight:700;font-size:clamp(24px,3.6vw,36px);line-height:1.15;color:#fff;margin:26px 0 8px}
+  h2{font-family:var(--head);font-weight:700;font-size:19px;color:#fff;margin:0 0 12px}
+  .sub{color:var(--text-dim);max-width:700px;margin-bottom:26px}
+  .cols{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;margin-bottom:40px}
+  @media(max-width:820px){.cols{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line2);border-top:2px solid var(--brass);border-radius:6px;padding:22px}
+  label{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:9px 0;font-size:13.5px;color:var(--text-dim)}
+  label input,label select{width:150px;background:var(--bg2);border:1px solid var(--line2);border-radius:4px;padding:9px 10px;color:var(--text);font:14px var(--body);text-align:right}
+  label input:focus{outline:none;border-color:rgba(212,175,55,.5)}
+  .res{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line2);font-size:14px;color:var(--text-dim)}
+  .res b{color:#fff;font-weight:600}
+  .res.hero{font-size:16px}
+  .res.hero b{color:var(--brass-lt);font-family:var(--head)}
+  .bind{margin:14px 0;padding:12px 14px;border-radius:6px;background:var(--bg2);border-left:3px solid var(--brass);font-size:14px}
+  .flag{color:var(--warn);font-size:13.5px;margin-top:4px}
+  .okc{color:var(--ok)}
+  .note{font-size:12.5px;color:#5d6874;line-height:1.6;margin:26px 0 40px}
+  footer{border-top:1px solid var(--line2);padding:30px 0 44px;background:var(--bg2);color:var(--text-dim);font-size:13px}
+</style></head>
+<body>
+<header><nav class="bar">
+  <a class="logo" href="/">
+    <svg width="36" height="27" viewBox="0 0 66 50"><path d="M5 46 L5 19 L19 5 L33 19 L47 5 L61 19 L61 46" fill="none" stroke="#d4af37" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <span><span class="lwm">MBL</span><br><span class="lwd">Developments</span></span>
+  </a>
+  <span>
+    <a class="link" href="/#work" style="color:var(--text-dim)">Our Work</a>
+    <a class="link" href="/blog/" style="color:var(--text-dim)">Insights</a>
+    <a class="link" href="/education.html" style="color:var(--brass-lt)">Education</a>
+  </span>
+</nav></header>
+
+<div class="container">
+<h1>CMHC Multifamily Quick Screen</h1>
+<p class="sub">A free, deterministic first screen for an <b style="color:var(--text)">existing 5+ unit rental property</b>. It sizes the loan both ways a lender does — debt coverage and loan-to-value — names the binding constraint, and shows the cash reality. Every formula runs in your browser; nothing is uploaded, nothing is stored.</p>
+
+<div class="cols">
+  <div class="card">
+    <h2>Inputs</h2>
+    <label>Number of units <input id="units" type="number" value="8"></label>
+    <label>Average monthly rent per unit ($) <input id="rent" type="number" value="1850"></label>
+    <label>Other income, monthly ($) <input id="other" type="number" value="400"></label>
+    <label>Vacancy &amp; bad debt (%) <input id="vac" type="number" value="3" step="0.5"></label>
+    <label>Operating expenses (% of EGI) <input id="opex" type="number" value="38" step="1"></label>
+    <label>Asking price ($) <input id="price" type="number" value="2400000" step="10000"></label>
+    <label>Cap rate for valuation (%) <input id="cap" type="number" value="5.0" step="0.05"></label>
+    <label>Interest rate (%) <input id="rate" type="number" value="4.2" step="0.05"></label>
+    <label>Amortization (years) <select id="am"><option>25</option><option>30</option><option>35</option><option selected>40</option><option>45</option><option>50</option></select></label>
+    <label>Max LTV (%) — 85 at 50+ pts, 95 at 70+ pts <select id="ltv"><option selected>85</option><option>95</option><option>75</option></select></label>
+    <label>Minimum DCR <input id="dcr" type="number" value="1.10" step="0.01"></label>
+    <label>Closing costs ($) <input id="closing" type="number" value="60000" step="5000"></label>
+    <label>Immediate capital work ($) <input id="capex" type="number" value="0" step="5000"></label>
+  </div>
+  <div class="card">
+    <h2>Screen result</h2>
+    <div id="out"></div>
+    <div class="bind" id="bind"></div>
+    <div id="flags"></div>
+  </div>
+</div>
+
+<p class="note">
+<b style="color:var(--text)">How the math works.</b> Gross potential rent = units × rent × 12 plus other income. EGI applies vacancy; NOI applies the expense ratio. Value = NOI ÷ cap rate. The DCR loan is the loan whose annual debt service (at your rate and amortization, monthly compounding) equals NOI ÷ minimum DCR; the LTV loan is max LTV × price; the final loan is the lesser — that is the <em>binding constraint</em>. Cash to close = price − loan + closing + immediate capital. Break-even occupancy = (operating expenses + debt service) ÷ gross potential income.<br><br>
+This is a first screen, not underwriting. It uses your expense ratio instead of a normalized operating statement — rebuilding NOI from source documents is where real underwriting happens, and it is what our course teaches: <a href="/education/cmhc-mli-select-existing-multifamily/">CMHC MLI Select for Existing Multifamily</a>. Point thresholds referenced from <a href="https://www.cmhc-schl.gc.ca/professionals/project-funding-and-mortgage-financing/mortgage-loan-insurance/multi-unit-insurance/mliselect" rel="noopener">CMHC's MLI Select criteria</a> (verified 2026-08-09). MBL Developments is an independent company — not affiliated with, reviewed by, or endorsed by CMHC. Not financial, legal or lending advice.
+</p>
+</div>
+
+<footer><div class="container">
+  MBL Developments · Toronto missing-middle rental development · chris@mbldevelopments.com · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a><br>
+  Nothing on this site is an offer of securities.
+</div></footer>
+
+<script>
+function fmt(n){ return '$' + Math.round(n).toLocaleString('en-CA'); }
+function pct(n){ return (100*n).toFixed(1) + '%'; }
+function calc(){
+  var u=+units.value, r=+rent.value, o=+other.value, v=+vac.value/100, ox=+opex.value/100,
+      P=+price.value, c=+cap.value/100, rt=+rate.value/100, n=+am.value*12, L=+ltv.value/100,
+      d=+dcr.value, cl=+closing.value, cx=+capex.value;
+  var gpr=(u*r+o)*12, egi=gpr*(1-v), noi=egi*(1-ox);
+  var i=rt/12, annuity=i>0 ? i/(1-Math.pow(1+i,-n)) : 1/n, constant=annuity*12;
+  var dcrLoan=noi/(d*constant), ltvLoan=P*L, loan=Math.min(dcrLoan,ltvLoan);
+  var value=c>0? noi/c : 0, capAtAsk=P>0? noi/P : 0;
+  var ds=loan*constant, cash=P-loan+cl+cx, cf=noi-ds;
+  var coc=cash>0? cf/cash : 0;
+  var beo=gpr>0? (egi*ox+ds)/gpr : 0;
+  var maxPrice=Math.min(value, dcrLoan/L);
+  var rows=[
+    ['Gross potential income',fmt(gpr)+'/yr'],
+    ['Effective gross income',fmt(egi)+'/yr'],
+    ['NOI',fmt(noi)+'/yr'],
+    ['Value at '+(c*100).toFixed(2)+'% cap',fmt(value)],
+    ['Cap rate at asking price',pct(capAtAsk)],
+    ['Mortgage constant',(constant*100).toFixed(3)+'%'],
+    ['Loan sized by DCR '+d.toFixed(2),fmt(dcrLoan)],
+    ['Loan sized by '+(L*100)+'% LTV',fmt(ltvLoan)],
+    ['<b>Final preliminary loan</b>','<b>'+fmt(loan)+'</b>'],
+    ['Annual debt service',fmt(ds)],
+    ['<b>Cash to close</b>','<b>'+fmt(cash)+'</b>'],
+    ['Annual cash flow after debt',fmt(cf)],
+    ['Cash-on-cash return',pct(coc)],
+    ['Break-even occupancy',pct(beo)],
+    ['<b>Max price at your criteria</b>','<b>'+fmt(maxPrice)+'</b>'],
+  ];
+  out.innerHTML=rows.map(function(x,idx){return '<div class="res'+(x[0].indexOf('<b>')===0?' hero':'')+'"><span>'+x[0]+'</span><span>'+x[1]+'</span></div>';}).join('');
+  var binding = dcrLoan<ltvLoan ? 'DCR is the binding constraint: coverage at '+d.toFixed(2)+' caps the loan at '+fmt(dcrLoan)+' — below what '+(L*100)+'% LTV would allow. More rent evidence or a lower price moves this loan; more equity does not.' : 'LTV is the binding constraint: '+(L*100)+'% of price caps the loan at '+fmt(ltvLoan)+'. At 70+ MLI Select points the LTV ceiling can rise — the points pathway is worth real money here.';
+  bind.textContent=binding;
+  var f=[];
+  if (P>maxPrice) f.push('⚠ Asking price exceeds the max supportable price at your criteria by '+fmt(P-maxPrice)+' — negotiate or pass.');
+  if (cf<0) f.push('⚠ Negative cash flow after debt service as modelled.');
+  if (beo>0.93) f.push('⚠ Break-even occupancy above 93% — thin margin for vacancy or expense surprises.');
+  if (ox<0.30) f.push('⚠ Expense ratio under 30% is optimistic for most existing buildings — rebuild it from the trailing statement.');
+  if (v<0.02) f.push('⚠ Vacancy under 2% is more optimistic than standard underwriting.');
+  flags.innerHTML=f.length? f.map(function(x){return '<p class="flag">'+x+'</p>';}).join('') : '<p class="flag okc">✓ No screen-level flags. A first screen passing is permission to underwrite properly — not to offer.</p>';
+}
+document.querySelectorAll('input,select').forEach(function(el){ el.addEventListener('input',calc); });
+calc();
+</script>
+</body></html>
