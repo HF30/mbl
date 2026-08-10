@@ -50,12 +50,13 @@
   <li><b>Shopping?</b> One copy per candidate — the loan screen sorts them in minutes.</li>
   <li><b>No property yet?</b> Buy-box mode: build the file at your criteria. The prepared buyer moves in days.</li>
 </ul>
+<p>It now ships with <b>Training File 01 — "The East-End Six"</b>: a composite 6-unit property built from real closed east-Toronto data, with the seller's information sheet (read it carefully), the actual rent roll, pocket lease evidence, one 3-minute task per lesson, and our sealed answer key. Follow the course, do the tasks, and you finish holding your own completed Financing Screen and Decision Memo.</p>
 <p><b>Free, in exchange for your email</b> — which also reserves your spot for the free MBL account when the tools platform opens.</p>
 <form data-gate method="post" action="https://aganakkpulqhugxjqonh.supabase.co/functions/v1/workbook-download">
   <input type="email" name="email" required placeholder="you@email.com" aria-label="Email">
   <button type="submit">Get the workbook</button>
 </form>
-<div id="done" style="display:none"><p class="ok">✓ Your download is starting. <a id="dl" href="#">Click here if it doesn't.</a></p></div>
+<div id="done" style="display:none"><p class="ok">✓ Your download is starting. <a id="dl" href="#">Workbook (xlsx)</a> · <a id="dlpack" href="#" style="display:none">Training File 01 (pdf)</a></p></div>
 <p class="note">Independent educational material · not affiliated with, endorsed by, or reviewed by CMHC · not financial, legal or lending advice. One email, no spam — the monthly research drop only if you opt in later.</p>
 </div>
 <footer><div class="container">MBL Developments · chris@mbldevelopments.com · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div></footer>
@@ -66,7 +67,10 @@ document.querySelector('form[data-gate]').addEventListener('submit', async funct
   try {
     var r = await fetch(f.action, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email: f.email.value})});
     var j = await r.json();
-    if (j.url) { document.getElementById('dl').href = j.url; document.getElementById('done').style.display = 'block'; f.style.display='none'; window.location = j.url; return; }
+    if (j.url) {
+      document.getElementById('dl').href = j.url;
+      if (j.pack) { var p = document.getElementById('dlpack'); p.href = j.pack; p.style.display = 'inline'; }
+      document.getElementById('done').style.display = 'block'; f.style.display='none'; window.location = j.url; return; }
     throw 0;
   } catch(_) { btn.textContent = 'Get the workbook'; btn.disabled = false; alert('Something went wrong — email chris@mbldevelopments.com and we\'ll send it directly.'); }
 });
