@@ -67,4 +67,10 @@ article hr{border:none;border-top:1px solid var(--line);margin:26px 0}
 .wardcard .wc{padding:13px 15px}
 .wardcard h4{font-family:"Jost",sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);margin-bottom:4px;line-height:1.2}
 .wardcard p{font-size:12.5px;color:var(--muted);line-height:1.4}
+/* related reading */
+.related{border-top:1px solid var(--line);margin-top:36px;padding-top:14px}
+.related h3{font-family:"Jost",sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin-bottom:8px}
+.related ul{list-style:none;margin:0}
+.related li{margin:7px 0}
+.related a{font-weight:600}
 @media(max-width:600px){.hero{padding:46px 0 36px}}
