@@ -9,7 +9,7 @@
 <meta property="og:image" content="https://mbldevelopments.com/river-render-1.webp">
 <meta property="og:url" content="https://mbldevelopments.com/">
 <meta property="og:type" content="website">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://mbldevelopments.com/#organization","name":"MBL Developments","url":"https://mbldevelopments.com","email":"chris@mbldevelopments.com","description":"Toronto missing-middle rental developer: six-unit purpose-built rentals in the nine as-of-right sixplex wards, CMHC MLI Select financed.","areaServed":"Toronto, Ontario"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://mbldevelopments.com/#organization","name":"MBL Developments","url":"https://mbldevelopments.com","email":"info@mbldevelopments.com","description":"Toronto missing-middle rental developer: six-unit purpose-built rentals in the nine as-of-right sixplex wards, CMHC MLI Select financed.","areaServed":"Toronto, Ontario"}</script>
 <link rel="alternate" type="application/rss+xml" title="MBL Insights" href="https://mbldevelopments.com/feed.xml">
 <link rel="stylesheet" href="https://use.typekit.net/pqx5flm.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,13 +151,11 @@
     </a>
     <button class="menubtn" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')"><span></span><span></span><span></span></button>
     <div class="navlinks" id="nl">
-      <a href="#opportunity">Opportunity</a>
-      <a href="#build">What We Build</a>
-      <a href="#engine">The Engine</a>
-      <a href="#work">Our Work</a>
+      <a href="#opportunity">What we do</a>
+      <a href="#work">Our work</a>
       <a href="blog/">Insights</a>
-      <a href="education.html" style="color:var(--brass-lt)">Education</a>
-      <a class="cta" href="#contact">Get in Touch</a>
+      <a href="education.html">Education</a>
+      <a class="cta" href="#contact">Get in touch</a>
     </div>
   </nav>
 </header>
@@ -331,7 +329,7 @@
     <div class="cgrid">
       <div class="reveal rd1">
         <p class="ssub" style="margin-top:0">For development, partnership and general inquiries, send us a note and we'll get back to you.</p>
-        <p style="margin-top:26px"><span class="lbl">Email</span><br><a href="mailto:chris@mbldevelopments.com" style="color:var(--text)">chris@mbldevelopments.com</a></p>
+        <p style="margin-top:26px"><span class="lbl">Email</span><br><a href="mailto:info@mbldevelopments.com" style="color:var(--text)">info@mbldevelopments.com</a></p>
         <p style="margin-top:16px"><span class="lbl">Location</span><br>Toronto, Ontario, Canada</p>
       </div>
       <form class="reveal rd2" data-lead="contact" method="post" action="https://nnltgynqwdcsiurejykl.supabase.co/functions/v1/mbl-lead-capture"><input type="hidden" name="source" value="contact">
@@ -351,7 +349,7 @@
         <svg width="34" height="26" viewBox="0 0 66 50"><path d="M5 46 L5 19 L19 5 L33 19 L47 5 L61 19 L61 46" fill="none" stroke="#d4af37" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/></svg>
         <span><span class="lwm" style="font-size:17px">MBL</span><br><span class="lwd">Developments</span></span>
       </div>
-      <div>Toronto, Ontario, Canada &nbsp;·&nbsp; <a href="mailto:chris@mbldevelopments.com">chris@mbldevelopments.com</a></div>
+      <div>Toronto, Ontario, Canada &nbsp;·&nbsp; <a href="mailto:info@mbldevelopments.com">info@mbldevelopments.com</a></div>
     </div>
     <p class="disc">© <span id="yr">2026</span> MBL Developments. This website is for general information about our development activities only. It is not an offer to sell, or a solicitation of an offer to buy, any securities. Any such offer would be made only to qualifying investors through formal offering documents prepared with legal counsel.</p>
     <p style="margin-top:10px;font-size:12px"><a href="privacy.html" style="color:#5d6874">Privacy</a> &nbsp;·&nbsp; <a href="terms.html" style="color:#5d6874">Terms</a></p>
@@ -377,7 +375,7 @@
         const r=await fetch('https://nnltgynqwdcsiurejykl.supabase.co/functions/v1/mbl-lead-capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
         if(!r.ok) throw 0;
         f.innerHTML='<p style="font-family:var(--head);font-weight:700;color:var(--brass-lt);font-size:16px;letter-spacing:.04em">✓ Got it — you\'re on the list. Talk soon.</p>';
-      }catch(_){ btn.disabled=false; btn.textContent=orig; alert('Something went wrong — email us at chris@mbldevelopments.com'); }
+      }catch(_){ btn.disabled=false; btn.textContent=orig; alert('Something went wrong — email us at info@mbldevelopments.com'); }
     });
   });
 </script>

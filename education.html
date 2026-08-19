@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mbldevelopments.com/education.html">
 <meta property="og:image" content="https://mbldevelopments.com/river-render-2.webp">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://mbldevelopments.com/#organization","name":"MBL Developments","url":"https://mbldevelopments.com/","email":"chris@mbldevelopments.com","description":"Toronto missing-middle rental developer: six-unit purpose-built rentals in the nine as-of-right sixplex wards, CMHC MLI Select financed."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://mbldevelopments.com/#organization","name":"MBL Developments","url":"https://mbldevelopments.com/","email":"info@mbldevelopments.com","description":"Toronto missing-middle rental developer: six-unit purpose-built rentals in the nine as-of-right sixplex wards, CMHC MLI Select financed."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"MBL Multifamily Education","itemListElement":[{"@type":"ListItem","position":1,"name":"CMHC Basics — free multifamily financing primer","url":"https://mbldevelopments.com/education/workbook.html"},{"@type":"ListItem","position":2,"name":"Canadian Multifamily Underwriting, Financing & Development Program","url":"https://mbldevelopments.com/education.html#program"},{"@type":"ListItem","position":3,"name":"Toronto Multiplex Project Review","url":"https://mbldevelopments.com/education/toronto-multiplex-project-review/"}]}</script>
 <link rel="stylesheet" href="https://use.typekit.net/pqx5flm.css">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
@@ -60,10 +60,11 @@
     <span><span class="lwm">MBL</span><br><span class="lwd">Developments</span></span>
   </a>
   <span>
-    <a class="link" href="/#work">Our Work</a>
+    <a class="link" href="/#opportunity">What we do</a>
+    <a class="link" href="/#work">Our work</a>
     <a class="link" href="/blog/">Insights</a>
     <a class="link" href="/education.html" style="color:var(--brass-lt)">Education</a>
-    <a class="link" href="/#contact">Contact</a>
+    <a class="link" href="/#contact">Get in touch</a>
   </span>
 </nav></header>
 
@@ -141,7 +142,7 @@
 </section>
 
 <footer><div class="container">
-  MBL Developments · Toronto missing-middle rental development · chris@mbldevelopments.com · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a><br>
+  MBL Developments · Toronto missing-middle rental development · info@mbldevelopments.com · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a><br>
   Content is general information, not investment, legal or tax advice. Nothing on this site is an offer of securities.
 </div></footer>
 
@@ -155,7 +156,7 @@
         var r = await fetch('https://nnltgynqwdcsiurejykl.supabase.co/functions/v1/mbl-lead-capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
         if (r.ok) { f.innerHTML = '<p class="ok">✓ Noted — you will receive the release notice.</p>'; return; }
         throw 0;
-      } catch(_) { btn.textContent = 'Receive the release notice'; btn.disabled = false; alert('Could not subscribe — email chris@mbldevelopments.com instead.'); }
+      } catch(_) { btn.textContent = 'Receive the release notice'; btn.disabled = false; alert('Could not subscribe — email info@mbldevelopments.com instead.'); }
     });
   });
 </script>
