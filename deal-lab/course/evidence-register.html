@@ -168,7 +168,7 @@
   rows.addEventListener('input',e=>{ if(e.target.tagName==='TEXTAREA'){e.target.style.height='auto';e.target.style.height=e.target.scrollHeight+'px';} });
   rows.addEventListener('change',renumber);
   document.getElementById('add').onclick=()=>addRow();
-  document.getElementById('example').onclick=()=>{ rows.innerHTML=''; EX.forEach(addRow); document.getElementById('m-prop').value='Sample Deal A — a five-plex'; document.getElementById('m-rules').value='CMHC MLI Select · 2026-08'; };
+  document.getElementById('example').onclick=()=>{ rows.innerHTML=''; EX.forEach(addRow); document.getElementById('m-prop').value='Sample Deal A — a Roncesvalles five-plex'; document.getElementById('m-rules').value='CMHC MLI Select · 2026-08'; };
   document.getElementById('clear').onclick=()=>{ rows.innerHTML=''; for(let i=0;i<4;i++)addRow(); };
   document.getElementById('print').onclick=()=>window.print();
   // start with a few blank rows
